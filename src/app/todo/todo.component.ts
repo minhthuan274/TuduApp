@@ -41,12 +41,12 @@ export class TodoComponent implements OnInit {
 
   get todos() {
     return this.todoService.getAllTodos()
-                           .filter(v => v.complete === false);
+                           .filter(v => !v.complete);
   }
 
   get dones() {
     return this.todoService.getAllTodos()
-                           .filter(v => v.complete === true);
+                           .filter(v => v.complete);
   }
 
 }
