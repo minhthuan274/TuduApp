@@ -1,0 +1,43 @@
+.todolist {
+  background-color: #FFF;
+  padding: 20px 20px 10px 20px;
+  margin-top: 30px;
+  border-right: 1px solid lightgray;
+}
+
+.donelist {
+  background-color: #FFF;
+  padding: 20px 20px 10px 20px;
+  margin-top: 30px;
+}
+
+ul.todos {
+    padding: 0 15px;
+}
+
+li.ui-state-default {
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0 5px 0;
+    cursor: pointer;
+}
+
+li.ui-state-default:last-child {
+    border: none;
+}
+
+.done-list li {
+    text-decoration: line-through;
+}
+
+.todo-footer {
+    background-color: lightgray;
+    margin:0 -20px -10px -20px;
+    padding: 10px 20px;
+}
+
+.btn-mark-all-done {
+    margin: 10px 0;
+}
+
