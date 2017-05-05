@@ -60,6 +60,4 @@ export class TodoService {
     });
     return updatedTodo;
   }
-
-
 }
