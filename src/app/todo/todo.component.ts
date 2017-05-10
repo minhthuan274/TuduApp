@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Todo } from '../todo';
 import { TodoService } from '../todo.service';
 
@@ -14,10 +15,13 @@ export class TodoComponent implements OnInit {
 
 
   constructor(
-    private todoService: TodoService
+    private todoService: TodoService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.route.params
+      .subscribe((params) => this.todoService.selectTask(+params.id));
   }
 
   addTodo() {

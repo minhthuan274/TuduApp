@@ -1,6 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
-body {
-  background-color: #EEEEEE;
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400);
+* {
+  box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  padding: 8%;
+  margin: 0;
+  background: #88c388;
+  box-shadow: inset rgba(0, 0, 0, 0.2) 0 0 100px;
+}
