@@ -1,43 +1,45 @@
-<div class="container">
-  <div class="row">
-    <div class="todolist col-md-6">
-      <h3 class="text-center">Todos</h3>
-      <div>
-        <input class="form-control" placeholder="What need to be done?" autofocus=""
-              [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
-        <button (click)=" markAllDone()" class="btn btn-success btn-mark-all-done">Mark all as done</button>
+<div *ngIf="isReady">
+  <div class="container">
+    <div class="row">
+      <div class="todolist col-md-6">
+        <h3 class="text-center">Todos</h3>
+        <div>
+          <input class="form-control" placeholder="What need to be done?" autofocus=""
+                [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+          <button (click)=" markAllDone()" class="btn btn-success btn-mark-all-done">Mark all as done</button>
+        </div>
+
+        <section *ngIf="todos.length > 0">
+          <ul class="todos">
+            <li *ngFor="let todo of todos" (click)="toggleTodoComplete(todo)" class="ui-state-default">
+              {{ todo.title }}
+            </li>
+          </ul>
+        </section>
+        <section *ngIf="todos.length == 0">
+          You've completed todo list.
+        </section>
+
+        <footer class="todo-footer" *ngIf="todos.length > 0">
+          <strong> {{ todos.length }} </strong> {{todos.length == 1 ? 'item' : 'items'}} left
+        </footer>
       </div>
 
-      <section *ngIf="todos.length > 0">
-        <ul class="todos">
-          <li *ngFor="let todo of todos" (click)="toggleTodoComplete(todo)" class="ui-state-default">
-            {{ todo.title }}
-          </li>
-        </ul>
-      </section>
-      <section *ngIf="todos.length == 0">
-        You've completed todo list.
-      </section>
-
-      <footer class="todo-footer" *ngIf="todos.length > 0">
-        <strong> {{ todos.length }} </strong> {{todos.length == 1 ? 'item' : 'items'}} left
-      </footer>
+      <div class="donelist col-md-6">
+        <h3 class="text-center">Already done</h3>
+        <section *ngIf="dones.length > 0">
+          <ul class="done-list">
+            <li *ngFor="let done of dones" (click)="removeTodo(done.id)" class="ui-state-default">
+              {{ done.title }}
+              <button class="remove-item btn btn-default btn-xs pull-right">
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
     </div>
 
-    <div class="donelist col-md-6">
-      <h3 class="text-center">Already done</h3>
-      <section *ngIf="dones.length > 0">
-        <ul class="done-list">
-          <li *ngFor="let done of dones" (click)="removeTodo(done)" class="ui-state-default">
-            {{ done.title }}
-            <button class="remove-item btn btn-default btn-xs pull-right">
-              <span class="glyphicon glyphicon-remove"></span>
-            </button>
-          </li>
-        </ul>
-      </section>
-    </div>
-  </div>
+    <a routerLink="/tasks" class="btn btn-primary" >Go back</a>
 </div>
-
-<a routerLink="/tasks" class="btn btn-primary" >Go back</a>

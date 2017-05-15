@@ -5,13 +5,18 @@
         type="text"
         formControlName="newTaskTitle"
         [(ngModel)]="newTask.title">
-      <button [disabled]="form.invalid">Add Task</button>
+      <button [disabled]="form.invalid" class="btn-add-task">Add Task</button>
     </div>
   </form>
 
   <ul>
-    <li *ngFor="let task of tasks" class="faded" (click)="goTodo(task.id)">
+    <li *ngFor="let task of tasks" 
+        class="faded" 
+        (click)="goTodo(task.id)" 
+      >
       <label>{{task.title}}</label>
+
+      <!--<button class="pull-right btn-delete-task">Delete</button>-->
     </li>
   </ul>
 </section>

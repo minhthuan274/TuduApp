@@ -9,6 +9,9 @@
   background-color: #FFF;
   padding: 20px 20px 10px 20px;
   margin-top: 30px;
+  li {
+      text-decoration: line-through;
+  }
 }
 
 ul.todos {
@@ -21,14 +24,9 @@ li.ui-state-default {
     border-bottom: 1px solid #ddd;
     padding: 20px 0 5px 0;
     cursor: pointer;
-}
-
-li.ui-state-default:last-child {
-    border: none;
-}
-
-.done-list li {
-    text-decoration: line-through;
+    &:last-child {
+        border: none;
+    }
 }
 
 .todo-footer {
@@ -40,4 +38,3 @@ li.ui-state-default:last-child {
 .btn-mark-all-done {
     margin: 10px 0;
 }
-

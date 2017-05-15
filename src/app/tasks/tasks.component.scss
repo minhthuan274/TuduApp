@@ -66,7 +66,6 @@ button {
   padding: 12px 20px;
   font-family: $font;
   font-size: 14px;
-  text-transform: uppercase;
   border: none;
   background: $color-button;
   color: $color-button-text;
@@ -90,6 +89,7 @@ button {
     transform: translateY(2px);
   }
 }
+
 
 input {
   padding: 10px;
@@ -134,11 +134,6 @@ ul {
       background: whitesmoke;
     }
   }
-}
-
-.completed {
-  text-decoration: line-through;
-  color: $color-complete;
 }
 
 @keyframes bounce {

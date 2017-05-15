@@ -2,23 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Task } from '../task';
-import { TodoService } from '../todo.service';
+import { Task } from "../task";
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.css'],
-  providers: [TodoService]
+  styleUrls: ['./tasks.component.scss'],
+  providers: [TaskService]
 })
 export class TasksComponent implements OnInit {
 
   newTask: Task = new Task();
   form: FormGroup;
+  tasks: Task[];
+  error: any;
 
   constructor(
     private router: Router,
-    private todoService: TodoService,
+    private taskService: TaskService,
     fb: FormBuilder
   ) {
     this.form = fb.group({
@@ -31,19 +33,25 @@ export class TasksComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getTasks();
+  }
+
+  getTasks() {
+    this.taskService
+        .getTasks()
+        .then(tasks => this.tasks = tasks)
+        .catch(error => this.error = error);
   }
 
   addTask() {
-    this.todoService.addTask(this.newTask);
+    this.taskService
+        .addTask(this.newTask);
+    this.getTasks();
     this.newTask = new Task();
   }
 
   goTodo(id: number) {
     this.router.navigate(['/todo', id]);
-  }
-
-  get tasks() {
-    return this.todoService.getAllTasks();
   }
 
 }

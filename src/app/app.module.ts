@@ -4,22 +4,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryTaskService } from './in-memory-task.service';
+
+
 import { AppComponent } from './app.component';
-import { TodoComponent } from './todo/todo.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent,
-    TasksComponent
+    TasksComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InMemoryWebApiModule.forRoot(InMemoryTaskService, { delay: 100 }),
   ],
   providers: [],
   bootstrap: [AppComponent]
