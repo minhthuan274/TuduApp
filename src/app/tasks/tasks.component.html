@@ -12,11 +12,22 @@
   <ul>
     <li *ngFor="let task of tasks" 
         class="faded" 
-        (click)="goTodo(task.id)" 
       >
-      <label>{{task.title}}</label>
+      <div class="view" *ngIf="task.id != taskEditing" (click)="goTodo(task.id)">
+        <label>{{task.title}}</label>
+        <i class="fa fa-remove pull-right" (click)="deleteTask(task, $event)"></i>  
+        <i class="fa fa-pencil pull-right" (click)="changeToEdit(task, $event)"></i>
+        <!--<button class="pull-right btn-edit-task" (click)="editTask(task, $event)"></button>-->
+        <!--<button class="pull-right btn-delete-task" (click)="deleteTask(task, $event)">Delete</button>-->
+      </div>
 
-      <!--<button class="pull-right btn-delete-task">Delete</button>-->
+      <input 
+        type="text"
+        #textTask
+        *ngIf="task.id == taskEditing"
+        (keyup.enter)="editTask(textTask.value, task, $event)"
+        (keyup.escape)="revertEdit()" 
+        value={{task.title}}>
     </li>
   </ul>
 </section>

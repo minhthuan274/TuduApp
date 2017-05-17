@@ -13,6 +13,7 @@ $color-complete: $gray;
 $color-checkbox: lighten($green, 10%);
 $color-checkbox-checked: $green;
 $color-item: darken($green, 20%);
+$color-button-delete: #d9534f;
 
 $margin-element: 24px;
 
@@ -88,6 +89,14 @@ button {
     box-shadow: inset darken($color-button, 15%) 0 0 0;
     transform: translateY(2px);
   }
+  &.btn-delete-task { 
+    margin-top: -9px;
+    background: $color-button-delete;
+    box-shadow: inset darken($color-button-delete, 20%) 0 -2px 0;
+    &:hover {
+      background: darken($color-button-delete, 5%);
+    }
+  }
 }
 
 
@@ -132,6 +141,9 @@ ul {
     }
     &:hover {
       background: whitesmoke;
+    }
+    .fa {
+      padding: 0 5px;
     }
   }
 }

@@ -17,6 +17,7 @@ export class TasksComponent implements OnInit {
   form: FormGroup;
   tasks: Task[];
   error: any;
+  taskEditing = -1;
 
   constructor(
     private router: Router,
@@ -43,11 +44,36 @@ export class TasksComponent implements OnInit {
         .catch(error => this.error = error);
   }
 
+  deleteTask(task: Task, event: Event) {
+    event.stopPropagation();
+    this.taskService
+        .deleteTask(task)
+        .catch(error => this.error = error);
+    this.tasks = this.tasks.filter(v => v.id !== task.id);
+  }
   addTask() {
     this.taskService
         .addTask(this.newTask);
     this.getTasks();
     this.newTask = new Task();
+  }
+
+  changeToEdit(task: Task, event: any) {
+    event.stopPropagation();
+    this.taskEditing = task.id;
+  }
+
+  editTask(text: string, task: Task, event: any) {
+    event.stopPropagation();
+    task.title = text;
+    this.taskService
+        .updateTask(task);
+    this.getTasks();
+    this.revertEdit();
+  }
+
+  revertEdit() {
+    this.taskEditing = -1;
   }
 
   goTodo(id: number) {
