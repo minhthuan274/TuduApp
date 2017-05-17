@@ -144,6 +144,9 @@ ul {
     }
     .fa {
       padding: 0 5px;
+      &:hover {
+        font-size: 1.3em;
+      }
     }
   }
 }
