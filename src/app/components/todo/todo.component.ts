@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router'
 
-import { Todo } from '../todo';
-import { Task } from '../task';
-import { TodoService } from '../todo.service';
+import { Todo } from '../../models/todo';
+import { Task } from '../../models/task';
+import { TodoService } from '../../services/todo.service';
 import * as Rx from 'rxjs/Rx';
 import 'rxjs/add/operator/filter';
 

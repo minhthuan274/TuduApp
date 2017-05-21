@@ -10,8 +10,8 @@ import { InMemoryTaskService } from './in-memory-task.service';
 
 
 import { AppComponent } from './app.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { TodoComponent } from './todo/todo.component';
+import { TasksComponent } from './components/tasks/tasks.component';
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [

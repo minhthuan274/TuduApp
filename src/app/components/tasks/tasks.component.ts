@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, CanDeactivate } from '@angular/router';
 
-import { Task } from "../task";
-import { TaskService } from '../task.service';
+import { Task } from "../../models/task";
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-tasks',
