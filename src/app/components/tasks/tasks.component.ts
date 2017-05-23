@@ -59,10 +59,13 @@ export class TasksComponent implements OnInit {
   addTask() {
     this.taskService
         .addTask(this.newTask)
-        .then(() => {
-          this.tasks.push(this.newTask);
-        })
-    this.newTask = new Task();
+        .then(res => {
+          if (res.ok) {
+            this.newTask.id = JSON.parse(res.text()).id;
+            this.tasks.push(this.newTask);
+            this.newTask = new Task();
+          }
+        });
   }
 
   changeToEdit(task: Task, event: any) {

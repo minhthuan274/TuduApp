@@ -52,14 +52,13 @@ export class TaskService {
                .catch(this.handleError);
   }
 
-  addTask(newTask: Task): Promise<void> {
+  addTask(newTask: Task): Promise<Response> {
     let addTaskUrl = this.tasksUrl + 'tasks';
     return this.http
                .post(addTaskUrl, JSON.stringify(newTask), { headers: this.headers } )
                .toPromise()
                .then(res => {
-                 res.json();
-                 console.log(res);
+                  return res;
                })
                .catch(this.handleError);
   }
