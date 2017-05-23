@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
-import { Task } from './task';
-import { Todo } from './todo';
+import { Task } from '../models/task';
+import { Todo } from '../models/todo';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class TaskService {
 
-  private tasksUrl = 'app/tasks';
+  private tasksUrl = 'http://localhost:3000/';
 
   private headers = new Headers({
       'Content-Type': 'application/json'
@@ -20,13 +20,14 @@ export class TaskService {
   ) { }
 
   getTasks(): Promise<Array<Task>> {
+    let indexTaskUrl = this.tasksUrl + "tasks.json";
     console.log("get All task");
     return this.http
-               .get(this.tasksUrl)
+               .get(indexTaskUrl)
                .toPromise()
                .then((response) => {
                  console.log(response.json());
-                 return response.json().data as Task[];
+                 return response.json().tasks as Task[];
                })
                .catch(this.handleError);
   }
@@ -40,31 +41,33 @@ export class TaskService {
   updateTask(task: Task): Promise<Task> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    const url = `${this.tasksUrl}/${task.id}`;
-
+    const url = this.tasksUrl + "tasks/" + task.id;
     return this.http
-               .put(url, JSON.stringify(task), { headers: headers })
+               .patch(url, JSON.stringify(task), { headers: headers })
                .toPromise()
-               .then(() => task)
+               .then((res) => {
+                 console.log(res);
+                 return task;
+                })
                .catch(this.handleError);
   }
 
   addTask(newTask: Task): Promise<void> {
-    newTask.todos = new Array<Todo>();
+    let addTaskUrl = this.tasksUrl + 'tasks';
     return this.http
-               .post(this.tasksUrl, JSON.stringify(newTask), { headers: this.headers } )
+               .post(addTaskUrl, JSON.stringify(newTask), { headers: this.headers } )
                .toPromise()
                .then(res => {
-                 res.json().data;
+                 res.json();
                  console.log(res);
                })
                .catch(this.handleError);
   }
 
   deleteTask(task: Task): Promise<Response> {
-    const url = `${this.tasksUrl}/${task.id}`;
+    let deleteTaskUrl = this.tasksUrl + "tasks/" + task.id;
     return this.http
-               .delete(url, { headers: this.headers })
+               .delete(deleteTaskUrl, { headers: this.headers })
                .toPromise()
                .catch(this.handleError);
   }

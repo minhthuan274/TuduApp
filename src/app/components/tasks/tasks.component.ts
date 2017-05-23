@@ -40,7 +40,10 @@ export class TasksComponent implements OnInit {
   getTasks() {
     this.taskService
         .getTasks()
-        .then(tasks => this.tasks = tasks)
+        .then(tasks => {
+          this.tasks = tasks;
+          console.log(this.tasks);
+        })
         .catch(error => this.error = error);
   }
 
@@ -48,13 +51,17 @@ export class TasksComponent implements OnInit {
     event.stopPropagation();
     this.taskService
         .deleteTask(task)
+        .then(() => {
+          this.tasks = this.tasks.filter(v => v.id !== task.id);
+        })
         .catch(error => this.error = error);
-    this.tasks = this.tasks.filter(v => v.id !== task.id);
   }
   addTask() {
     this.taskService
-        .addTask(this.newTask);
-    this.getTasks();
+        .addTask(this.newTask)
+        .then(() => {
+          this.tasks.push(this.newTask);
+        })
     this.newTask = new Task();
   }
 
@@ -67,9 +74,11 @@ export class TasksComponent implements OnInit {
     event.stopPropagation();
     task.title = text;
     this.taskService
-        .updateTask(task);
-    this.getTasks();
-    this.revertEdit();
+        .updateTask(task)
+        .then(() => {
+          this.tasks.find(t => t.id === task.id).title = text;
+          this.revertEdit();
+        })
   }
 
   revertEdit() {
@@ -77,7 +86,7 @@ export class TasksComponent implements OnInit {
   }
 
   goTodo(id: number) {
-    this.router.navigate(['/todo', id]);
+    this.router.navigate(['/tasks', id]);
   }
 
 }

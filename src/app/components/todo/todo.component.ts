@@ -16,11 +16,10 @@ import 'rxjs/add/operator/filter';
 export class TodoComponent implements OnInit {
 
   newTodo: Todo = new Todo();
-  tasks: Task[];
-  task : Task = new Task();
   dones: Todo[];
-  todos: Todo[];
+  todos: Todo[] = new Array<Todo>();
   isReady = false;
+  taskId: number;
 
 
   constructor(
@@ -29,46 +28,53 @@ export class TodoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getTask();
+    this.getTodos();
   }
 
-  getTask() {
+  getTodos() {
     this.route.params
       .subscribe(params => {
-        this.todoService.getTask(+params.id)
-                        .then(task => {
-                          this.task = task;
-                          this.dones = task.todos.filter(v => v.complete);
-                          this.todos = task.todos.filter(v => !v.complete);                        
+        this.taskId = +params.id;
+        this.todoService.getTodos(this.taskId)
+                        .then(todos => {
+                          this.todos = todos;
+                          console.log("Get todos ", todos);
+                          this.dones = this.todos.filter(v => v.isComplete);
+                          this.todos = this.todos.filter(v => !v.isComplete);                        
                           this.isReady = true;
                         })
       });
   }
   addTodo() {
-    this.newTodo.id = this.task.todos.length;
-    this.task.todos.push(this.newTodo);
-    this.todoService.updateTask(this.task);
-    this.getTask();
-    this.newTodo = new Todo();
+    this.newTodo.isComplete = false;
+    this.newTodo.belongs_to = this.taskId;
+    this.todoService.addTodo(this.newTodo)
+                    .then((res) => {
+                      if (res.ok){
+                        this.newTodo.id = JSON.parse(res.text()).id;
+                        this.todos.push(this.newTodo);
+                      }
+                       this.newTodo = new Todo();
+                    })
   }
 
   markAllDone(){
-    this.task.todos.filter(v => !v.complete)
-        .map(v => v.complete = !v.complete);
-    this.todoService.updateTask(this.task);
-    this.getTask();
+    
   }
 
   removeTodo(id: number) {
-    this.task.todos = this.task.todos.filter(v => v.id !== id);
-    this.todoService.updateTask(this.task);
-    this.getTask();
+    this.todoService.removeTodo(id)
+        .then(() => {
+          this.dones = this.dones.filter(v => v.id !== id);
+        });
   }
 
-  toggleTodoComplete(todo) {
-    this.task.todos.filter(v => v.id === todo.id)
-        .map(v => v.complete = !v.complete);
-    this.todoService.updateTask(this.task);
-    this.getTask();
+  toggleTodoComplete(todo: Todo) {
+    this.todoService.toggleTodoComplete(todo.id) 
+        .then(() => {
+          todo.isComplete = true;
+          this.dones.push(todo);
+          this.todos = this.todos.filter(v => v.id !== todo.id);
+        })
   }
 }

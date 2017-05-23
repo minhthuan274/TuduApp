@@ -7,8 +7,7 @@ import { TodoComponent } from './components/todo/todo.component';
 const routes: Routes = [
     { path: '', redirectTo: '/tasks', pathMatch: 'full'},
     { path: 'tasks',    component: TasksComponent },
-    { path: 'todo/:id', component: TodoComponent },
-    { path: '/*other',  redirectTo: '/tasks'}
+    { path: 'tasks/:id', component: TodoComponent }
 ];
 
 @NgModule({
