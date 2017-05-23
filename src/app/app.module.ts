@@ -4,11 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
-
-// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { InMemoryTaskService } from './in-memory-task.service';
-
-
 import { AppComponent } from './app.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { TodoComponent } from './components/todo/todo.component';
@@ -25,7 +20,6 @@ import { TodoComponent } from './components/todo/todo.component';
     HttpModule,
     AppRoutingModule,
     ReactiveFormsModule
-    // InMemoryWebApiModule.forRoot(InMemoryTaskService, { delay: 100 }),
   ],
   providers: [],
   bootstrap: [AppComponent]
