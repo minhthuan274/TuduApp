@@ -62,22 +62,12 @@ export class TasksComponent implements OnInit {
     this.toogleLoading();
     this.taskService
         .addTask(this.newTask)
-<<<<<<< HEAD
-        .then(res => {
-          if (res.ok) {
-            this.newTask.id = JSON.parse(res.text()).id;
-            this.tasks.push(this.newTask);
-            this.newTask = new Task();
-          }
-        });
-=======
         .then((res) => {
           this.toogleLoading();
           this.newTask.id = JSON.parse(res.text()).id;
           this.tasks.push(this.newTask);
           this.newTask = new Task();
         })
->>>>>>> implements-with-rails
   }
 
   changeToEdit(task: Task, event: any) {
