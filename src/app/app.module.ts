@@ -36,7 +36,7 @@ import { TodoComponent } from './components/todo/todo.component';
     MdProgressBarModule
   ],
   providers: [
-    {provide: APP_BASE_HREF, useValue: '/'},
+    // {provide: APP_BASE_HREF, useValue: '/'},
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
