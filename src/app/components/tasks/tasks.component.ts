@@ -18,6 +18,7 @@ export class TasksComponent implements OnInit {
   tasks: Task[];
   error: any;
   taskEditing = -1;
+  loading = true;
 
   constructor(
     private router: Router,
@@ -41,6 +42,7 @@ export class TasksComponent implements OnInit {
     this.taskService
         .getTasks()
         .then(tasks => {
+          this.toogleLoading();
           this.tasks = tasks;
           console.log(this.tasks);
         })
@@ -57,8 +59,10 @@ export class TasksComponent implements OnInit {
         .catch(error => this.error = error);
   }
   addTask() {
+    this.toogleLoading();
     this.taskService
         .addTask(this.newTask)
+<<<<<<< HEAD
         .then(res => {
           if (res.ok) {
             this.newTask.id = JSON.parse(res.text()).id;
@@ -66,6 +70,14 @@ export class TasksComponent implements OnInit {
             this.newTask = new Task();
           }
         });
+=======
+        .then((res) => {
+          this.toogleLoading();
+          this.newTask.id = JSON.parse(res.text()).id;
+          this.tasks.push(this.newTask);
+          this.newTask = new Task();
+        })
+>>>>>>> implements-with-rails
   }
 
   changeToEdit(task: Task, event: any) {
@@ -91,5 +103,10 @@ export class TasksComponent implements OnInit {
   goTodo(id: number) {
     this.router.navigate(['/tasks', id]);
   }
+
+  toogleLoading() {
+    this.loading = !this.loading;
+  }
+
 
 }

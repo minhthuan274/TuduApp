@@ -59,7 +59,16 @@ export class TodoComponent implements OnInit {
   }
 
   markAllDone(){
-    
+    this.todoService.markAllDone(this.taskId)
+        .then(res => {
+          if (res.ok) {
+            this.todos.map(v => {
+              v.isComplete = true;
+              this.dones.push(v);
+            });
+            this.todos = [];
+          }
+        })
   }
 
   removeTodo(id: number) {

@@ -6,4 +6,8 @@ export class Todo {
     constructor(values: Object ={}) {
         Object.assign(this, values);
     }
+
+    public setDone(): void {
+        this.isComplete = false;
+    }
 }

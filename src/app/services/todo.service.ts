@@ -32,8 +32,11 @@ export class TodoService {
   }
 
   addTodo(todo: Todo): Promise<Response> {
-    // const url = this.todosUrl + "todos";
-    const url = `${this.todosUrl}todos?title=${todo.title}&belongs_to=${todo.belongs_to}`;
+    let params: string = [
+      `title=${todo.title}`,
+      `belongs_to=${todo.belongs_to}`
+    ].join("&");
+    const url = `${this.todosUrl}todos?${params}`;
     return this.http
                .post(url, {}, { headers: this.headers })
                .toPromise()
@@ -41,6 +44,18 @@ export class TodoService {
                 //  console.log(JSON.parse(res.text()).id);
                  return res;
                })
+               .catch(this.handleError);
+  }
+
+  markAllDone(task_id: number): Promise<Response> {
+    let params: string = [
+      `task_id=${task_id}`
+    ].join("&");
+
+    const url = `${this.todosUrl}mark_all_done?${params}`;
+    return this.http
+               .post(url, {}, { headers: this.headers })
+               .toPromise()
                .catch(this.handleError);
   }
 
