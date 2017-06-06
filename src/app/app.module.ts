@@ -19,12 +19,16 @@ import {
 import { AppComponent } from './app.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { TodoComponent } from './components/todo/todo.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
+import { Angular2TokenService } from 'angular2-token';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
-    TodoComponent
+    TodoComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import { TodoComponent } from './components/todo/todo.component';
   ],
   providers: [
     // {provide: APP_BASE_HREF, useValue: '/'},
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    Angular2TokenService
   ],
   bootstrap: [AppComponent]
 })
