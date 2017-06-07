@@ -7,9 +7,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/tasks', pathMatch: 'full'},
-    { path: 'tasks',        component: TasksComponent },
-    { path: 'tasks/:id',    component: TodoComponent },
-    { path: 'profile',      component: ProfileComponent}
+    { path: 'tasks',            component: TasksComponent },
+    { path: 'tasks/:id',        component: TodoComponent },
+    { path: 'profile',          component: ProfileComponent}
 ];
 
 @NgModule({
