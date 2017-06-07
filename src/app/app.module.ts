@@ -13,7 +13,9 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
-  MdProgressBarModule
+  MdProgressBarModule,
+  MdToolbarModule,
+  MdButtonModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -22,13 +24,21 @@ import { TodoComponent } from './components/todo/todo.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 import { Angular2TokenService } from 'angular2-token';
+import { AuthComponent } from './components/auth/auth.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
     TodoComponent,
-    ProfileComponent
+    ProfileComponent,
+    AuthComponent,
+    LoginComponent,
+    SignupComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +47,9 @@ import { Angular2TokenService } from 'angular2-token';
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MdProgressBarModule
+    MdProgressBarModule,
+    MdToolbarModule,
+    MdButtonModule
   ],
   providers: [
     // {provide: APP_BASE_HREF, useValue: '/'},
