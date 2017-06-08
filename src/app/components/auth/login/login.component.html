@@ -6,7 +6,7 @@
       </div>
     </h2>
     <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)" class="ui large form">
-      <app-error-label [control]="loginForm" [submitted]="submitted"></app-error-label>
+      <app-error-label [control]="loginForm"></app-error-label>
       <div class="ui stacked secondary  segment">
         <div class="field">
           <label for="email">Email</label>

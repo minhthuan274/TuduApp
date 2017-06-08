@@ -10,7 +10,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class TodoService {
-  private todosUrl = 'https://guarded-lake-39919.herokuapp.com/';
+  private todosUrl = 'https://safe-harbor-26419.herokuapp.com/';
 
   private headers = new Headers({
       'Content-Type': 'application/json'
