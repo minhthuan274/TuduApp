@@ -35,8 +35,9 @@ section {
   font-family: $font;
   font-size: 18px;
   line-height: 22px;
-  background: white;
   border-radius: 8px;
+  border: 1px solid lightgray;
+  background-color: white;
   box-shadow: rgba(black, 0.2) 0 20px 20px -12px;
 }
 

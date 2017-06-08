@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router'
+import { AuthComponent } from '../../components/auth/auth.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  isLoggedOut(): boolean {
+    return !this.authService.isLoggedIn();
+  }
+
+  logOut() {
+    this.authService.logOut();
   }
 
 }

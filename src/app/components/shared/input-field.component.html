@@ -1,0 +1,8 @@
+<div>
+  <label [attr.for]=attribute>{{attribute}}</label>
+  <div class="ui left icon input">
+   <i class={{icon}}></i>
+    <input id={{attribute}} type={{type}} [formControl]="control" name={{type}} placeholder={{placeholder}}>
+  </div>
+  <app-error-label [control]="control" [submitted]="submitted"></app-error-label>
+</div>
