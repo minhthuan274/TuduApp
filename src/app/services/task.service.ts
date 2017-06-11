@@ -3,12 +3,14 @@ import { Headers, Http, Response } from '@angular/http';
 import { Task } from '../models/task';
 import { Todo } from '../models/todo';
 
+import { environment } from '../../environments/environment';
+
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class TaskService {
 
-  private tasksUrl = 'https://safe-harbor-26419.herokuapp.com/';
+  private tasksUrl = environment.api_url;
 
   private headers = new Headers({
       'Content-Type': 'application/json'

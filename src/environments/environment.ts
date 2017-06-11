@@ -6,6 +6,8 @@
 export const environment = {
   production: false,
   token_auth_config: {
-    apiBase: 'https://safe-harbor-26419.herokuapp.com/'
-  }
+      apiBase: 'http://localhost:3000'
+  },
+  app_base_href: '/',
+  api_url: 'http://localhost:3000/'
 };

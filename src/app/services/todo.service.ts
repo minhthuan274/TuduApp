@@ -5,12 +5,14 @@ import { Todo } from '../models/todo';
 
 import {Observable} from 'rxjs/Rx';
 
+import { environment } from '../../environments/environment';
+
 import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
 export class TodoService {
-  private todosUrl = 'https://safe-harbor-26419.herokuapp.com/';
+  private todosUrl = environment.api_url;
 
   private headers = new Headers({
       'Content-Type': 'application/json'

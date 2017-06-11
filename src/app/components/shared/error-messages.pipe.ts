@@ -32,7 +32,7 @@ export class ErrorMessagesPipe implements PipeTransform {
   }
 
   private cannotContainSpace(_error): string {
-    return 'Cannot contain space';
+    return 'Cannot contain spaces';
   }
 
   private patternError(error): string {

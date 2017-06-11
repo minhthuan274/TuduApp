@@ -24,15 +24,15 @@ import { AppComponent } from './app.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+
 
 import { Angular2TokenService } from 'angular2-token';
 import { AuthService } from './services/auth.service';
-import { AuthComponent } from './components/auth/auth.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { SignupComponent } from './components/auth/signup/signup.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 import { SharedModule } from './components/shared/shared.module';
+import { AuthModule } from './components/auth/auth.module';
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -40,9 +40,6 @@ import { SharedModule } from './components/shared/shared.module';
     TasksComponent,
     TodoComponent,
     ProfileComponent,
-    AuthComponent,
-    LoginComponent,
-    SignupComponent,
     ToolbarComponent
   ],
   imports: [
@@ -57,10 +54,11 @@ import { SharedModule } from './components/shared/shared.module';
     MdButtonModule,
     MdInputModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    AuthModule
   ],
   providers: [
-    // {provide: APP_BASE_HREF, useValue: '/'},
+    {provide: APP_BASE_HREF, useValue: environment.app_base_href },
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     Angular2TokenService,
     AuthService
