@@ -24,6 +24,10 @@ export class AuthService {
     return this.authService.registerAccount(signUpData);
   }
 
+  getUserData() {
+    return this.authService.currentUserData;
+  }
+
   proccessOauthCallback(): void {
     this.authService.processOAuthCallback();
     this.redirectAfterLogin();
