@@ -6,11 +6,13 @@ import { ListsComponent } from './components/lists/lists.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 import { LoggedInGuard } from './services/guards/logged-in-guards.service';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/lists', pathMatch: 'full'},
+    { path: '', redirectTo: '/home', pathMatch: 'full'},
+    { path: 'home',         component: HomeComponent },
     { path: 'lists',        component: ListsComponent},
     { path: 'lists/:id',    component: TaskComponent },
     { path: 'profile',      component: ProfileComponent},
