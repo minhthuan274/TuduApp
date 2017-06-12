@@ -32,7 +32,7 @@ export class ErrorMessagesPipe implements PipeTransform {
   }
 
   private cannotContainSpace(_error): string {
-    return 'Cannot contain spaces';
+    return 'This field cannot contain spaces';
   }
 
   private patternError(error): string {
@@ -48,7 +48,7 @@ export class ErrorMessagesPipe implements PipeTransform {
   }
 
   private requiredError(_error): string {
-    return 'Is required';
+    return 'This field is required';
   }
 
   private fullMessages(error): Array<string> {

@@ -21,8 +21,8 @@ import {
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { TasksComponent } from './components/tasks/tasks.component';
-import { TodoComponent } from './components/todo/todo.component';
+import { TaskComponent } from './components/task/task.component';
+import { ListsComponent } from './components/lists/lists.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
@@ -37,8 +37,8 @@ import { environment } from "../environments/environment";
 @NgModule({
   declarations: [
     AppComponent,
-    TasksComponent,
-    TodoComponent,
+    TaskComponent,
+    ListsComponent,
     ProfileComponent,
     ToolbarComponent
   ],

@@ -4,6 +4,7 @@ import { List } from '../models/list';
 import { Task } from '../models/task';
 
 import { AuthService } from './auth.service';
+import { Angular2TokenService } from 'angular2-token';
 import { environment } from '../../environments/environment';
 
 import 'rxjs/add/operator/toPromise';
@@ -20,18 +21,23 @@ export class ListService {
 
   constructor(
     private http: Http,
-    private authService: AuthService
+    private authService: AuthService,
+    private authTokenSerivce: Angular2TokenService
   ) { }
 
   getLists(): Promise<Array<List>> {
-    let indexListUrl = this.ListsUrl + "list.json";
+    // console.log(this.authTokenSerivce.currentUserData);
+    let params: string = [
+      `user_id=3`
+    ].join("&");
+    let indexListUrl = `${this.ListsUrl}lists.json?${params}`;
     console.log("get All List");
     return this.http
                .get(indexListUrl)
                .toPromise()
                .then((response) => {
                  console.log(response.json());
-                 return response.json().Lists as List[];
+                 return response.json().lists as List[];
                })
                .catch(this.handleError);
   }
@@ -60,7 +66,7 @@ export class ListService {
   addList(newList: List): Promise<Response> {
     let params: string = [
       `title=${newList.title}`,
-      'user_id=$(this.authService.getUserData.id)'
+      `user_id=3`
     ].join("&");    
     const url = `${this.ListsUrl}lists?${params}`;
     return this.http

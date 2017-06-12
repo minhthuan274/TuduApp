@@ -5,13 +5,13 @@
         <h3 class="text-center">Todos</h3>
         <div>
           <input class="form-control" placeholder="What need to be done?" autofocus=""
-                [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+                [(ngModel)]="newTask.title" (keyup.enter)="addTask()">
           <button (click)=" markAllDone()" class="btn btn-success btn-mark-all-done">Mark all as done</button>
         </div>
 
         <section *ngIf="todos.length > 0">
           <ul class="todos">
-            <li *ngFor="let todo of todos" (click)="toggleTodoComplete(todo)" class="ui-state-default">
+            <li *ngFor="let todo of todos" (click)="toggleTaskComplete(todo)" class="ui-state-default">
               {{ todo.title }}
             </li>
           </ul>
@@ -41,5 +41,5 @@
     </div>
     </div>
 
-    <a routerLink="/tasks" class="btn btn-primary" >Go back</a>
+    <a routerLink="/lists" class="btn btn-primary" >Go back</a>
 </div>
