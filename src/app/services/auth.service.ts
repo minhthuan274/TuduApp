@@ -35,8 +35,8 @@ export class AuthService {
 
   logOut(): void {
     this.redirectUrl = undefined;
-    this.authService.signOut();
-    this.router.navigate(['/']);
+    this.authService.signOut().subscribe(() => this.router.navigate(['/']));
+    
   }
 
   isLoggedIn(): boolean {

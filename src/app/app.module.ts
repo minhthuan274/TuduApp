@@ -33,6 +33,7 @@ import { AuthService } from './services/auth.service';
 import { SharedModule } from './components/shared/shared.module';
 import { AuthModule } from './components/auth/auth.module';
 import { environment } from "../environments/environment";
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { environment } from "../environments/environment";
     TaskComponent,
     ListsComponent,
     ProfileComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ import { LoggedInGuard } from './services/guards/logged-in-guards.service';
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full'},
     { path: 'home',         component: HomeComponent },
-    { path: 'lists',        component: ListsComponent},
+    { path: 'lists',        component: ListsComponent, canActivate: [LoggedInGuard]},
     { path: 'lists/:id',    component: TaskComponent },
     { path: 'profile',      component: ProfileComponent},
     { path: 'signup',       component: SignupComponent},

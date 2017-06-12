@@ -58,7 +58,8 @@ export class ListsComponent implements OnInit {
         })
         .catch(error => this.error = error);
   }
-  addlist() {
+  addList() {
+    console.log("Add list");
     this.toogleLoading();
     this.listService
         .addList(this.newList)
