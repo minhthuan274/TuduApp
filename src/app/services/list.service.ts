@@ -28,7 +28,7 @@ export class ListService {
   getLists(): Promise<Array<List>> {
     // console.log(this.authTokenSerivce.currentUserData);
     let params: string = [
-      `user_id=3`
+      `user_id=${this.authTokenSerivce.currentUserData.id}`
     ].join("&");
     let indexListUrl = `${this.ListsUrl}lists.json?${params}`;
     console.log("get All List");
@@ -66,7 +66,7 @@ export class ListService {
   addList(newList: List): Promise<Response> {
     let params: string = [
       `title=${newList.title}`,
-      `user_id=3`
+      `user_id=${this.authTokenSerivce.currentUserData.id}`
     ].join("&");    
     const url = `${this.ListsUrl}lists?${params}`;
     return this.http

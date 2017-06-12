@@ -53,7 +53,7 @@ export class TaskComponent implements OnInit {
                     .then((res) => {
                       if (res.ok){
                         this.newTask.id = JSON.parse(res.text()).id;
-                        this.tasks.push(this.newTask);
+                        this.todos.push(this.newTask);
                       }
                        this.newTask = new Task();
                     })

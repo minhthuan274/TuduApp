@@ -66,6 +66,7 @@ export class ListsComponent implements OnInit {
         .then((res) => {
           this.toogleLoading();
           this.newList.id = JSON.parse(res.text()).id;
+          console.log(this.lists);
           this.lists.push(this.newList);
           this.newList = new List();
         })
@@ -76,7 +77,7 @@ export class ListsComponent implements OnInit {
     this.listEditing = list.id;
   }
 
-  editlist(text: string, list: List, event: any) {
+  editList(text: string, list: List, event: any) {
     event.stopPropagation();
     list.title = text;
     this.listService
