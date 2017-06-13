@@ -9,6 +9,7 @@ import { environment } from "../environments/environment";
 })
 export class AppComponent {
   title = 'app works!';
+  searching = true;
   constructor(
     private authToken: Angular2TokenService
   ) {
