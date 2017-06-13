@@ -1,15 +1,15 @@
 <md-toolbar color="primary">
-  Tudu app
+  <a [routerLink]="['']">Tudu app</a>
   <span class="app-toolbar-filler"></span>  
   <button md-button [routerLink]="['/lists']">Task Lists</button>
 
   <button md-button routerLink="/login" routerLinkActive="active" 
-          *ngIf="isLoggedOut()">Login </button>
+          *ngIf="!(authService.userSignedIn$ | async)">Login </button>
   <button md-button routerLink="/signup" routerLinkActive="active" 
-          *ngIf="isLoggedOut()">Sign up</button>
+          *ngIf="!(authService.userSignedIn$ | async)">Sign up</button>
 
   <button 
     md-button routerLink="/logout" routerLinkActive="active" 
-    *ngIf="isLoggedIn()"
+    *ngIf="(authService.userSignedIn$ | async)"
     (click)="logOut()">Log out</button>
 </md-toolbar>
