@@ -29,7 +29,7 @@
         <h3 class="text-center">Already done</h3>
         <section *ngIf="dones.length > 0">
           <ul class="done-list">
-            <li *ngFor="let done of dones" (click)="removeTodo(done.id)" class="ui-state-default">
+            <li *ngFor="let done of dones" (click)="removeTask(done.id)" class="ui-state-default">
               {{ done.title }}
               <button class="remove-item btn btn-default btn-xs pull-right">
                 <span class="glyphicon glyphicon-remove"></span>

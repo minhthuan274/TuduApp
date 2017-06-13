@@ -60,7 +60,7 @@ import { HomeComponent } from './components/home/home.component';
     AuthModule
   ],
   providers: [
-    {provide: APP_BASE_HREF, useValue: environment.app_base_href },
+    // {provide: APP_BASE_HREF, useValue: environment.app_base_href },
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     Angular2TokenService,
     AuthService
