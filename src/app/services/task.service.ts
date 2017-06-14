@@ -4,6 +4,7 @@ import { Task } from '../models/task';
 import { List } from '../models/list';
 
 import {Observable} from 'rxjs/Rx';
+import { Angular2TokenService } from 'angular2-token';
 
 import { environment } from '../../environments/environment';
 
@@ -19,7 +20,8 @@ export class TaskService {
     });
 
   constructor(
-    private http: Http
+    private http: Http,
+    private authTokenSerivce: Angular2TokenService
   ) { }
 
   getTasks(id: number): Promise<Task[]> {

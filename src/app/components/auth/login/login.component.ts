@@ -17,6 +17,7 @@ import { MyValidations } from '../MyValidations';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  loading = false;
 
   constructor(
     private authService: AuthService,
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit(value: any) {
+    this.toggleLoading();
     this.authService.logIn(value.email, value.password).subscribe(
       this.authService.redirectAfterLogin.bind(this.authService),
       this.afterFailedLogin.bind(this)
@@ -41,6 +43,7 @@ export class LoginComponent implements OnInit {
   }
 
   afterFailedLogin(errors: any) {
+    this.toggleLoading();
     let parsed_errors = JSON.parse(errors._body).errors;
     for (let attribute in this.loginForm.controls) {
       if (parsed_errors[attribute]) {
@@ -48,6 +51,10 @@ export class LoginComponent implements OnInit {
       }
     }
     this.loginForm.setErrors(parsed_errors);
+  }
+
+  private toggleLoading() {
+    this.loading = !this.loading;
   }
 
 }

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router, CanDeactivate } from '@angular/router';
 
-import { List } from "../../models/list";
-import { ListService } from '../../services/list.service';
+import { List } from "../../../models/list";
+import { ListService } from '../../../services/list.service';
 
 @Component({
   selector: 'app-lists',
@@ -12,7 +12,7 @@ import { ListService } from '../../services/list.service';
   providers: [ListService]
 })
 export class ListsComponent implements OnInit {
-
+  @HostBinding('attr.class') cssClass = 'col-md-6 col-md-offset-1';
   newList: List = new List();
   form: FormGroup;
   lists: List[];

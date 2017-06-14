@@ -18,6 +18,7 @@ import { MyValidations } from '../MyValidations';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  loading = false;
 
   signUpUser = {
     email: '',
@@ -51,6 +52,7 @@ export class SignupComponent implements OnInit {
   }
 
   submit() {
+    this.toggleLoading();
     this.authService.signUp(this.signUpUser)
         .subscribe(
           this.authService.redirectAfterLogin.bind(this.authService),
@@ -58,6 +60,7 @@ export class SignupComponent implements OnInit {
   }
 
   afterFailedLogin(errors: any) {
+    this.toggleLoading();
     let parsed_errors = JSON.parse(errors._body).errors;
     for (let attribute in this.signUpForm.controls) {
       if (parsed_errors[attribute]) {
@@ -65,6 +68,10 @@ export class SignupComponent implements OnInit {
       }
     }
     this.signUpForm.setErrors(parsed_errors);
+  }
+
+  private toggleLoading() {
+    this.loading = !this.loading;
   }
 
 }

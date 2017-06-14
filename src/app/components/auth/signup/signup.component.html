@@ -6,6 +6,10 @@
       </div>
     </h2>
     <form [formGroup]="signUpForm" (ngSubmit)="submit()" class="ui large form">
+      <div *ngIf="loading">
+        <md-progress-bar mode="query"></md-progress-bar>
+      </div>
+
       <div class="ui stacked secondary segment">
         <div class="field">
           <label for="email">Email</label>

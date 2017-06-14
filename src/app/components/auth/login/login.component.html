@@ -6,6 +6,9 @@
       </div>
     </h2>
     <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)" class="ui large form">
+      <div *ngIf="loading">
+        <md-progress-bar mode="query"></md-progress-bar>
+      </div>
       <app-error-label [control]="loginForm"></app-error-label>
       <div class="ui stacked secondary  segment">
         <div class="field">

@@ -22,29 +22,27 @@ import {
 
 import { AppComponent } from './app.component';
 import { TaskComponent } from './components/task/task.component';
-import { ListsComponent } from './components/lists/lists.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 
 import { Angular2TokenService } from 'angular2-token';
 import { AuthService } from './services/auth.service';
+import { SearchService } from './services/search.service';
 
 import { SharedModule } from './components/shared/shared.module';
 import { AuthModule } from './components/auth/auth.module';
+import { ListsModule } from './components/task_lists/lists.module';
 import { environment } from "../environments/environment";
 import { HomeComponent } from './components/home/home.component';
-import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskComponent,
-    ListsComponent,
     ProfileComponent,
     ToolbarComponent,
     HomeComponent,
-    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -58,14 +56,15 @@ import { SearchComponent } from './components/search/search.component';
     MdButtonModule,
     MdInputModule,
     SharedModule,
-    MaterialModule,
-    AuthModule
+    AuthModule,
+    ListsModule
   ],
   providers: [
     // {provide: APP_BASE_HREF, useValue: environment.app_base_href },
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     Angular2TokenService,
-    AuthService
+    AuthService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })
