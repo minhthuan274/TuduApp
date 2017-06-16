@@ -74,6 +74,10 @@
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-4.1.0.tgz#4370f569e51ddd99963b7f4aa58c1a5dcc5fea52"
 
+"@angular/common@~4.1.2":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-4.1.3.tgz#e7c4791e32131cf74c239428c2a67daab2eef017"
+
 "@angular/compiler-cli@^4.0.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-4.1.0.tgz#727aaada8bfd94285e9818995925048f7fdf1200"
@@ -86,9 +90,17 @@
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-4.1.0.tgz#be1ade5b6aec81f03c29d52bcb95925a28900dcb"
 
+"@angular/compiler@~4.1.2":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-4.1.3.tgz#d2dd30853b0cf4a54758b4a314632c231f9c94c3"
+
 "@angular/core@^4.0.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.1.0.tgz#72ec173316879571880c9c483ed6dfc0caab94b0"
+
+"@angular/core@~4.1.2":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.1.3.tgz#285498eb86ab7d0b6f982f8f9f487ef610013b35"
 
 "@angular/forms@^4.0.0":
   version "4.1.0"
@@ -108,9 +120,17 @@
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.1.0.tgz#0250d82d4abd36be60bb31fc7448ac6e28036690"
 
+"@angular/platform-browser-dynamic@~4.1.2":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.1.3.tgz#3c13fdcf591d487f6efdc1d46913f280c6d8c2ec"
+
 "@angular/platform-browser@^4.0.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.1.0.tgz#b981386be1a36f2af7f0679447fd97b7267b25de"
+
+"@angular/platform-browser@~4.1.2":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.1.3.tgz#4fa1db5119dd178b315ddae5b329bee1a932a5bd"
 
 "@angular/router@^4.1.1":
   version "4.1.1"
@@ -135,9 +155,19 @@
     magic-string "^0.19.0"
     source-map "^0.5.6"
 
+"@types/datatables.net@^1.10.1":
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/@types/datatables.net/-/datatables.net-1.10.2.tgz#e688f0b9ada26e21bb18d7f8bf3791f6b823f6bd"
+  dependencies:
+    "@types/jquery" "*"
+
 "@types/jasmine@2.5.38":
   version "2.5.38"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.38.tgz#a4379124c4921d4e21de54ec74669c9e9b356717"
+
+"@types/jquery@*", "@types/jquery@^2.0.46":
+  version "2.0.47"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-2.0.47.tgz#9665a157519dd48d259f94ac670d332a56561c00"
 
 "@types/node@^6.0.46", "@types/node@~6.0.60":
   version "6.0.72"
@@ -234,6 +264,21 @@ angular-cli-github-pages@^0.2.0:
     fs-extra "^0.24.0"
     inquirer "^0.10.1"
     rsvp "^3.0.14"
+
+angular-datatables@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/angular-datatables/-/angular-datatables-4.1.1.tgz#388295c7dede96647d0712094bd58189039af4db"
+  dependencies:
+    "@angular/common" "~4.1.2"
+    "@angular/compiler" "~4.1.2"
+    "@angular/core" "~4.1.2"
+    "@angular/platform-browser" "~4.1.2"
+    "@angular/platform-browser-dynamic" "~4.1.2"
+    core-js "~2.4.1"
+    datatables.net "~1.10.13"
+    jquery ">=3.1.1"
+    rxjs "~5.3.0"
+    zone.js "~0.8.8"
 
 angular-in-memory-web-api@^0.3.2:
   version "0.3.2"
@@ -595,6 +640,10 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+bootstrap@^3.3.7:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
 boxen@^1.0.0:
   version "1.0.0"
@@ -1072,7 +1121,7 @@ cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
-core-js@^2.2.0, core-js@^2.4.0, core-js@^2.4.1:
+core-js@^2.2.0, core-js@^2.4.0, core-js@^2.4.1, core-js@~2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
 
@@ -1283,6 +1332,41 @@ dashdash@^1.12.0:
   resolved "https://registry.yarnpkg.com/dashdash/-/dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0"
   dependencies:
     assert-plus "^1.0.0"
+
+datatables.net-bs@>=1.10.9, datatables.net-bs@^1.10.15:
+  version "1.10.15"
+  resolved "https://registry.yarnpkg.com/datatables.net-bs/-/datatables.net-bs-1.10.15.tgz#b2c2261007d84ca5b5abf56c18edc227e0da1a4d"
+  dependencies:
+    datatables.net ">=1.10.9"
+    jquery ">=1.7"
+
+datatables.net-dt@^1.10.15:
+  version "1.10.15"
+  resolved "https://registry.yarnpkg.com/datatables.net-dt/-/datatables.net-dt-1.10.15.tgz#cc67136c569888acf34687e34a0aeaa99378bbc6"
+  dependencies:
+    datatables.net ">=1.10.9"
+    jquery ">=1.7"
+
+datatables.net-select-bs@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/datatables.net-select-bs/-/datatables.net-select-bs-1.2.2.tgz#22baa97718fb73ebea28494c985c49d456ef04b5"
+  dependencies:
+    datatables.net-bs ">=1.10.9"
+    datatables.net-select ">=1.0.1"
+    jquery ">=1.7"
+
+datatables.net-select@>=1.0.1, datatables.net-select@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/datatables.net-select/-/datatables.net-select-1.2.2.tgz#9651793f52899f4e5745c0720821e8b8286fbf45"
+  dependencies:
+    datatables.net ">=1.10.9"
+    jquery ">=1.7"
+
+datatables.net@>=1.10.9, datatables.net@^1.10.15, datatables.net@~1.10.13:
+  version "1.10.15"
+  resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-1.10.15.tgz#c789077bbfe385e75ff5a233fa5f23251a72df68"
+  dependencies:
+    jquery ">=1.7"
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -2706,6 +2790,10 @@ jodid25519@^1.0.0:
   resolved "https://registry.yarnpkg.com/jodid25519/-/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
   dependencies:
     jsbn "~0.1.0"
+
+jquery@>=1.7, jquery@>=3.1.1, jquery@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
 js-base64@^2.1.5, js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.1.9"
@@ -4346,7 +4434,7 @@ rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
-rxjs@^5.0.1, rxjs@^5.1.0:
+rxjs@^5.0.1, rxjs@^5.1.0, rxjs@~5.3.0:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.3.1.tgz#9ecc9e722247e4f4490d30a878577a3740fd0cb7"
   dependencies:
@@ -5511,6 +5599,6 @@ yn@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-1.2.0.tgz#d237a4c533f279b2b89d3acac2db4b8c795e4a63"
 
-zone.js@^0.8.4:
+zone.js@^0.8.4, zone.js@~0.8.8:
   version "0.8.10"
   resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.10.tgz#6d1b696492c029cdbe808e59e87bbd9491b98aa8"

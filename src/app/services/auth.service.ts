@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   get currentUserAdmin(): boolean { 
-    return this.getUserData().provider == "Admin";
+    return this.getUserData().nickname == "Admin";
   }
 
   getUserData() {

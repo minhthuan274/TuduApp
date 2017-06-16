@@ -2,7 +2,7 @@
   <a [routerLink]="['']">Tudu app</a>
   <span class="app-toolbar-filler"></span>  
   <button md-button [routerLink]="['/lists']">Task Lists</button>
-
+  <button md-button [routerLink]="['/lists_management']">Management</button>
   <button md-button routerLink="/login" routerLinkActive="active" 
           *ngIf="!(authService.userSignedIn$ | async)">Login </button>
   <button md-button routerLink="/signup" routerLinkActive="active" 
