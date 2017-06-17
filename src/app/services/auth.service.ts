@@ -15,7 +15,7 @@ export class AuthService {
     public authService: Angular2TokenService,
     public router: Router
   ) {
-    this.userSignedIn$.next(this.authService.userSignedIn());
+    this.userSignedIn$.next(!!this.authService.currentUserData);
   }
 
   logIn(email: string, password: string): Observable<Response> {
@@ -31,11 +31,14 @@ export class AuthService {
     return this.authService.registerAccount(signUpData)
                .map(res => {
                  this.userSignedIn$.next(true);
+                 this.logIn(signUpData.email, signUpData.password);
                  return res;
                })
   }
 
   get currentUserAdmin(): boolean { 
+    console.log(this.getUserData());
+    if (!(!!this.authService.currentUserData)) return false;
     return this.getUserData().nickname == "Admin";
   }
 

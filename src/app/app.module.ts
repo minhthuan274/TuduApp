@@ -19,6 +19,7 @@ import {
   MdInputModule,
   MdCardModule
 } from '@angular/material';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent }         from './app.component';
 import { TaskComponent }        from './components/task/task.component';
@@ -34,7 +35,6 @@ import { SearchService }        from './services/search.service';
 import { SharedModule }         from './components/shared/shared.module';
 import { AuthModule }           from './components/auth/auth.module';
 import { ListsModule }          from './components/task_lists/lists.module';
-import { DataTablesModule }     from 'angular-datatables';
 import { environment }          from "../environments/environment";
 
 import { AdminGuard }           from './services/guards/admin-guard.service'; 
@@ -64,7 +64,7 @@ import { AdminGuard }           from './services/guards/admin-guard.service';
     SharedModule,
     AuthModule,
     ListsModule,
-    DataTablesModule
+    DataTablesModule.forRoot()
   ],
   providers: [
     // {provide: APP_BASE_HREF, useValue: environment.app_base_href },
