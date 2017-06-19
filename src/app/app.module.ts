@@ -13,16 +13,17 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
-  MdProgressBarModule,
-  MdToolbarModule,
-  MdButtonModule,
+  MdButtonModule, MdButtonToggleModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdCoreModule, MdIconModule,
   MdInputModule,
-  MdCardModule
+  MdLineModule, MdListModule, MdMenuModule, MdOptionModule, MdProgressBarModule, MdProgressSpinnerModule, MdRadioModule,
+  MdRippleModule, MdSelectModule, MdSliderModule, MdSlideToggleModule, MdSnackBarModule, MdTabsModule, MdToolbarModule, MdTooltipModule
 } from '@angular/material';
+
 import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent }         from './app.component';
 import { TaskComponent }        from './components/task/task.component';
+import { ShareListComponent }   from './components/task/share_list.component';
 import { ProfileComponent }     from './components/profile/profile.component';
 import { ToolbarComponent }     from './components/toolbar/toolbar.component';
 import { HomeComponent }        from './components/home/home.component';
@@ -38,6 +39,33 @@ import { ListsModule }          from './components/task_lists/lists.module';
 import { environment }          from "../environments/environment";
 
 import { AdminGuard }           from './services/guards/admin-guard.service'; 
+import 'hammerjs';
+
+const MATERIAL_IMPORTS = [
+  MdButtonModule,
+  MdButtonToggleModule,
+  MdCardModule,
+  MdCheckboxModule,
+  MdChipsModule,
+  MdCoreModule,
+  MdIconModule,
+  MdInputModule,
+  MdLineModule,
+  MdListModule,
+  MdMenuModule,
+  MdOptionModule,
+  MdProgressBarModule,
+  MdProgressSpinnerModule,
+  MdRadioModule,
+  MdRippleModule,
+  MdSelectModule,
+  MdSliderModule,
+  MdSlideToggleModule,
+  MdSnackBarModule,
+  MdTabsModule,
+  MdToolbarModule,
+  MdTooltipModule
+];
 
 
 @NgModule({
@@ -48,23 +76,24 @@ import { AdminGuard }           from './services/guards/admin-guard.service';
     ToolbarComponent,
     HomeComponent,
     ListsManagementComponent,
+    ShareListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
+    MATERIAL_IMPORTS,
     AppRoutingModule,
     ReactiveFormsModule,
-    MdProgressBarModule,
-    MdToolbarModule,
-    MdButtonModule,
-    MdCardModule,
-    MdInputModule,
     SharedModule,
     AuthModule,
     ListsModule,
     DataTablesModule.forRoot()
+  ],
+
+  exports: [
+    MATERIAL_IMPORTS
   ],
   providers: [
     // {provide: APP_BASE_HREF, useValue: environment.app_base_href },

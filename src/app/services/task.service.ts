@@ -24,13 +24,13 @@ export class TaskService {
     private authTokenSerivce: Angular2TokenService
   ) { }
 
-  getTasks(id: number): Promise<Task[]> {
+  getTasks(id: number): Promise<Response> {
     let url = `${this.TasksUrl}lists/${id}.json`;
     return this.http.get(url)
                .toPromise()
                .then(response => {
                  console.log("Respone get Tasks ", response.json());
-                 return response.json().tasks as Task[];
+                 return response;
                })
                .catch(this.handleError);
   }

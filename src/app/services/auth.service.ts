@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   get currentUserAdmin(): boolean { 
-    console.log(this.getUserData());
+    // console.log(this.getUserData());
     if (!(!!this.authService.currentUserData)) return false;
     return this.getUserData().nickname == "Admin";
   }

@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router'
+import { ShareListComponent } from './share_list.component';
 
 import { List } from '../../models/list';
 import { Task } from '../../models/task';
 import { TaskService } from '../../services/task.service';
 import * as Rx from 'rxjs/Rx';
 import 'rxjs/add/operator/filter';
+
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-task',
@@ -21,15 +24,19 @@ export class TaskComponent implements OnInit {
   tasks: Task[];
   isReady = false;
   listId: number;
+  user_id: number;
+  current_user_id: number;
 
 
   constructor(
     private taskService: TaskService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.getTasks();
+    this.current_user_id = this.authService.getUserData().id;
   }
 
   getTasks() {
@@ -37,9 +44,9 @@ export class TaskComponent implements OnInit {
       .subscribe(params => {
         this.listId = +params.id;
         this.taskService.getTasks(this.listId)
-                        .then(tasks => {
-                          this.tasks = tasks;
-                          console.log("Get Tasks ", tasks);
+                        .then(res => {
+                          this.tasks = res.json().tasks as Task[];
+                          this.user_id = res.json().user_id;
                           this.dones = this.tasks.filter(v => v.complete);
                           this.todos = this.tasks.filter(v => !v.complete);                        
                           this.isReady = true;

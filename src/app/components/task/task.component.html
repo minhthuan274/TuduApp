@@ -39,7 +39,8 @@
         </section>
       </div>
     </div>
-    </div>
+  </div>
 
-    <a routerLink="/lists" class="btn btn-primary" >Go back</a>
+  <app-share-list *ngIf="current_user_id == user_id"[list_id]="listId"></app-share-list>
+  <a routerLink="/lists" class="btn btn-primary row" >Go back</a>
 </div>

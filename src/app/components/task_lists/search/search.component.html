@@ -12,10 +12,11 @@
   </form>
 
   <div *ngIf="(loading$ | async)" class="col-md-12">
-    <div class="spinner">
+    <md-spinner strokeWidth="20px"></md-spinner>
+    <!-- <div class="spinner">
       <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
       <span class="sr-only">Loading...</span>
-    </div>
+    </div> -->
   </div>
 
   <div *ngIf="!((loading$ | async) && searching)" class="results">

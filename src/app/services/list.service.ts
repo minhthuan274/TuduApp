@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { List } from '../models/list';
 import { Task } from '../models/task';
+import * as _ from 'lodash';
 
 import { AuthService } from './auth.service';
 import { Angular2TokenService } from 'angular2-token';
@@ -36,8 +37,8 @@ export class ListService {
                .get(indexListUrl)
                .toPromise()
                .then((response) => {
-                 console.log(response.json());
-                 return response.json().lists as List[];
+                  console.log(response.json().shares);
+                  return _.concat(response.json().lists, response.json().shares);
                })
                .catch(this.handleError);
   }
