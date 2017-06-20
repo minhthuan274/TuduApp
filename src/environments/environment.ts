@@ -5,15 +5,15 @@
 
 export const environment = {
   production: false,
-  // token_auth_config: {
-  //   apiBase: 'https://obscure-cliffs-67821.herokuapp.com'
-  // },
-  // app_base_href: 'https://minhthuan274.github.io/TuduApp/',
-  // api_url: 'https://obscure-cliffs-67821.herokuapp.com/'
-
   token_auth_config: {
-      apiBase: 'http://localhost:3000'
+    apiBase: 'https://obscure-cliffs-67821.herokuapp.com'
   },
-  app_base_href: '/',
-  api_url: 'http://localhost:3000/'
+  app_base_href: 'https://minhthuan274.github.io/TuduApp/',
+  api_url: 'https://obscure-cliffs-67821.herokuapp.com/'
+
+  // token_auth_config: {
+  //     apiBase: 'http://localhost:3000'
+  // },
+  // app_base_href: '/',
+  // api_url: 'http://localhost:3000/'
 };
