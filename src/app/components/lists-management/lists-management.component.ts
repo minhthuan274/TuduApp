@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 class List { 
   title: string;
   user_email: string;
+  shares: string;
   todo_count: number;
   done_count: number;
 }

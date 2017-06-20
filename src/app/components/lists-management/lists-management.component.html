@@ -5,6 +5,7 @@
       <tr>
         <th>List name</th>
         <th>User</th>
+        <th>Shares</th>
         <th>Todo count</th>
         <th>Done count</th>
       </tr>
@@ -14,6 +15,7 @@
       <tr *ngFor="let list of lists">
         <td>{{ list.title }}</td>
         <td>{{ list.user_email }}</td>
+        <td>{{ list.shares }}</td>
         <td>{{ list.todo_count }}</td>
         <td>{{ list.done_count }}</td>
       </tr>
