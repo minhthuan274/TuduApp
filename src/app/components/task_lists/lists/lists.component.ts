@@ -4,6 +4,7 @@ import { Router, CanDeactivate } from '@angular/router';
 
 import { List } from "../../../models/list";
 import { ListService } from '../../../services/list.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-lists',
@@ -23,6 +24,7 @@ export class ListsComponent implements OnInit {
   constructor(
     private router: Router,
     private listService: ListService,
+    private authService: AuthService,
     fb: FormBuilder
   ) {
     this.form = fb.group({
@@ -98,6 +100,10 @@ export class ListsComponent implements OnInit {
 
   toogleLoading() {
     this.loading = !this.loading;
+  }
+
+  correct_user(user_id: number): boolean {
+    return user_id === this.authService.getUserData().id;
   }
 
 

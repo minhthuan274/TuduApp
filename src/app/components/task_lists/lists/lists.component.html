@@ -20,8 +20,8 @@
       >
       <div class="view" *ngIf="list.id != listEditing" (click)="goTodo(list.id)">
         <label>{{list.title}}</label>
-        <i class="fa fa-remove pull-right" (click)="deleteList(list, $event)"></i>  
-        <i class="fa fa-pencil pull-right" (click)="changeToEdit(list, $event)"></i>
+        <i *ngIf="correct_user(list.user_id)" class="fa fa-remove pull-right" (click)="deleteList(list, $event)"></i>  
+        <i *ngIf="correct_user(list.user_id)" class="fa fa-pencil pull-right" (click)="changeToEdit(list, $event)"></i>
       </div>
 
       <input 
