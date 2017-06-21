@@ -96,7 +96,7 @@ const MATERIAL_IMPORTS = [
     MATERIAL_IMPORTS
   ],
   providers: [
-    // {provide: APP_BASE_HREF, useValue: environment.app_base_href },
+    {provide: APP_BASE_HREF, useValue: environment.app_base_href },
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     Angular2TokenService,
     AuthService,
