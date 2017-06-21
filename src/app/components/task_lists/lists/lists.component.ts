@@ -20,6 +20,7 @@ export class ListsComponent implements OnInit {
   error: any;
   listEditing = -1;
   loading = true;
+  currentUserData: any;
 
   constructor(
     private router: Router,
@@ -38,6 +39,7 @@ export class ListsComponent implements OnInit {
 
   ngOnInit() {
     this.getLists();
+    this.currentUserData = this.authService.getUserData();
   }
 
   getLists() {
@@ -103,7 +105,7 @@ export class ListsComponent implements OnInit {
   }
 
   correct_user(user_id: number): boolean {
-    return user_id === this.authService.getUserData().id;
+    return user_id === this.currentUserData.id;
   }
 
 
