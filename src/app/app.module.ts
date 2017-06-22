@@ -40,6 +40,7 @@ import { environment }          from "../environments/environment";
 
 import { AdminGuard }           from './services/guards/admin-guard.service'; 
 import 'hammerjs';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const MATERIAL_IMPORTS = [
   MdButtonModule,
@@ -76,7 +77,8 @@ const MATERIAL_IMPORTS = [
     ToolbarComponent,
     HomeComponent,
     ListsManagementComponent,
-    ShareListComponent
+    ShareListComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,7 @@ import { TaskListsComponent }   from './components/task_lists/task_lists.compone
 import { ProfileComponent }     from './components/profile/profile.component';
 import { HomeComponent }        from './components/home/home.component';
 import { ListsManagementComponent } from './components/lists-management/lists-management.component';
-
+import { NotFoundComponent }    from './components/not-found/not-found.component';
 
 import { LoggedInGuard }        from './services/guards/logged-in-guards.service';
 import { AdminGuard }           from './services/guards/admin-guard.service'; 
@@ -14,12 +14,26 @@ import { AdminGuard }           from './services/guards/admin-guard.service';
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full'},
     { path: 'home',         component: HomeComponent },
-    { path: 'lists',        component: TaskListsComponent, 
-                            canActivate: [LoggedInGuard]},
-    { path: 'lists_management', component:  ListsManagementComponent, 
-                                canActivate: [AdminGuard]},
-    { path: 'lists/:id',    component: TaskComponent },
-    { path: 'profile',      component: ProfileComponent}
+    { 
+        path: 'lists',        
+        component: TaskListsComponent, 
+        canActivate: [LoggedInGuard]
+    },
+    { 
+        path: 'lists/:id',    
+        component: TaskComponent,
+        canActivate: [LoggedInGuard ]
+    },
+    { 
+        path: 'lists_management', 
+        component:  ListsManagementComponent, 
+        canActivate: [AdminGuard]
+    },
+    { path: 'profile',      component: ProfileComponent},
+    { 
+        path: '**',
+        component: NotFoundComponent
+    }
 ];
 
 @NgModule({

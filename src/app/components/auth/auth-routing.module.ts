@@ -23,7 +23,6 @@ const routes: Routes = [
       }
     ])
   ],
-
   exports: [
     RouterModule
   ],
