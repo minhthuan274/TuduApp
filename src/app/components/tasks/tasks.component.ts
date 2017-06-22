@@ -11,6 +11,7 @@ import { TaskService } from '../../services/task.service';
   styleUrls: ['./tasks.component.scss'],
   providers: [TaskService]
 })
+
 export class TasksComponent implements OnInit {
 
   newTask: Task = new Task();
