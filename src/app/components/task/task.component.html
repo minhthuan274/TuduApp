@@ -5,13 +5,13 @@
         <h3 class="text-center">Todos</h3>
         <div>
           <input class="form-control" placeholder="What need to be done?" autofocus=""
-                [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+                [(ngModel)]="newTask.title" (keyup.enter)="addTask()">
           <button (click)=" markAllDone()" class="btn btn-success btn-mark-all-done">Mark all as done</button>
         </div>
 
         <section *ngIf="todos.length > 0">
           <ul class="todos">
-            <li *ngFor="let todo of todos" (click)="toggleTodoComplete(todo)" class="ui-state-default">
+            <li *ngFor="let todo of todos" (click)="toggleTaskComplete(todo)" class="ui-state-default">
               {{ todo.title }}
             </li>
           </ul>
@@ -29,7 +29,7 @@
         <h3 class="text-center">Already done</h3>
         <section *ngIf="dones.length > 0">
           <ul class="done-list">
-            <li *ngFor="let done of dones" (click)="removeTodo(done.id)" class="ui-state-default">
+            <li *ngFor="let done of dones" (click)="removeTask(done.id)" class="ui-state-default">
               {{ done.title }}
               <button class="remove-item btn btn-default btn-xs pull-right">
                 <span class="glyphicon glyphicon-remove"></span>
@@ -39,7 +39,8 @@
         </section>
       </div>
     </div>
-    </div>
+  </div>
 
-    <a routerLink="/tasks" class="btn btn-primary" >Go back</a>
+  <app-share-list *ngIf="current_user_id == user_id"[list_id]="listId"></app-share-list>
+  <a routerLink="/lists" class="btn btn-primary row" >Go back</a>
 </div>

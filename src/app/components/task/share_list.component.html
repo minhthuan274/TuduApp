@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 main-share">
+      <md-card class="center-card ">
+        <h4 class="main-title">Share the current list</h4>
+        <div class="row">
+          <div class="col-md-10">
+            <md-select placeholder="Email" name="user" [(ngModel)]="selectedId">
+              <md-option *ngFor="let user of users" [value]="user.id">
+                {{ user.email }}
+              </md-option>
+            </md-select>
+            <button md-raised-button color="primary" [disabled]="loading"(click)="shareList()">Share</button>
+          </div>
+
+          <div class="col-md-2">
+            <md-spinner *ngIf="loading"></md-spinner>
+          </div>
+        </div>
+      </md-card>
+    </div>
+  </div>
+</div>

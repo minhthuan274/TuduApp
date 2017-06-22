@@ -1,9 +1,13 @@
-import { Todo } from './todo';
-
 export class Task {
     id: number;
     title: string;
-    constructor(values: Object={}){
+    complete: boolean = false;
+    list_id: number;
+    constructor(values: Object ={}) {
         Object.assign(this, values);
+    }
+
+    public setDone(): void {
+        this.complete = false;
     }
 }

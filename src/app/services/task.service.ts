@@ -1,78 +1,89 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Task } from '../models/task';
-import { Todo } from '../models/todo';
+import { List } from '../models/list';
+
+import {Observable} from 'rxjs/Rx';
+import { Angular2TokenService } from 'angular2-token';
+
+import { environment } from '../../environments/environment';
 
 import 'rxjs/add/operator/toPromise';
 
+
 @Injectable()
 export class TaskService {
-
-  private tasksUrl = 'https://guarded-lake-39919.herokuapp.com/';
+  private TasksUrl = environment.api_url;
 
   private headers = new Headers({
       'Content-Type': 'application/json'
     });
 
-
   constructor(
-    private http: Http
+    private http: Http,
+    private authTokenSerivce: Angular2TokenService
   ) { }
 
-  getTasks(): Promise<Array<Task>> {
-    let indexTaskUrl = this.tasksUrl + "tasks.json";
-    console.log("get All task");
-    return this.http
-               .get(indexTaskUrl)
+  getTasks(id: number): Promise<Response> {
+    let url = `${this.TasksUrl}lists/${id}.json`;
+    return this.http.get(url)
                .toPromise()
-               .then((response) => {
-                 console.log(response.json());
-                 return response.json().tasks as Task[];
+               .then(response => {
+                 console.log("Respone get Tasks ", response.json());
+                 return response;
                })
                .catch(this.handleError);
   }
 
-  getTask(id: number): Promise<Task>{
-    console.log("Get task with ", id);
-    return this.getTasks()
-               .then(tasks => tasks.find(task => task.id === id));
-  }
-
-  updateTask(task: Task): Promise<Task> {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    const url = this.tasksUrl + "tasks/" + task.id;
+  addTask(task: Task): Promise<Response> {
+    let params: string = [
+      `title=${task.title}`,
+      `list_id=${task.list_id}`
+    ].join("&");
+    const url = `${this.TasksUrl}tasks?${params}`;
     return this.http
-               .patch(url, JSON.stringify(task), { headers: headers })
-               .toPromise()
-               .then((res) => {
-                 console.log(res);
-                 return task;
-                })
-               .catch(this.handleError);
-  }
-
-  addTask(newTask: Task): Promise<Response> {
-    let addTaskUrl = this.tasksUrl + 'tasks';
-    return this.http
-               .post(addTaskUrl, JSON.stringify(newTask), { headers: this.headers } )
+               .post(url, {}, { headers: this.headers })
                .toPromise()
                .then(res => {
-                  return res;
+                //  console.log(JSON.parse(res.text()).id);
+                 return res;
                })
                .catch(this.handleError);
   }
 
-  deleteTask(task: Task): Promise<Response> {
-    let deleteTaskUrl = this.tasksUrl + "tasks/" + task.id;
+  markAllDone(task_id: number): Promise<Response> {
+    let params: string = [
+      `task_id=${task_id}`
+    ].join("&");
+
+    const url = `${this.TasksUrl}mark_all_done?${params}`;
     return this.http
-               .delete(deleteTaskUrl, { headers: this.headers })
+               .post(url, {}, { headers: this.headers })
                .toPromise()
                .catch(this.handleError);
   }
 
+  toggleTaskComplete(id: number): Promise<Response> {
+    let url = `${this.TasksUrl}tasks/${id}`;
+    return this.http
+               .patch(url, {}, { headers: this.headers })
+               .toPromise()
+               .catch(this.handleError);
+  }
+
+  removeTask(id: number): Promise<Response> {
+    let url = `${this.TasksUrl}tasks/${id}`;
+    return this.http 
+               .delete(url, { headers: this.headers })
+               .toPromise()
+               .catch(this.handleError);
+  }
+
+  
+
   private handleError(error: any): Promise<any> {
-    console.log('An error occurred', error);
+    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
+
 }

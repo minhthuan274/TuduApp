@@ -1,0 +1,66 @@
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui image header">
+      <div class="content">
+        Create an accout
+      </div>
+    </h2>
+    <form [formGroup]="signUpForm" (ngSubmit)="submit()" class="ui large form">
+      <div *ngIf="loading">
+        <md-progress-bar mode="query"></md-progress-bar>
+      </div>
+
+      <div class="ui stacked secondary segment">
+        <div class="field">
+          <label for="email">Email</label>
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input 
+              id="email"
+              type="email"
+              placeholder="email"
+              [(ngModel)]="signUpUser.email"
+              formControlName="email"
+              >
+          </div>
+          <app-error-label [control]="signUpForm.get('email')"></app-error-label>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input 
+              id="password"
+              type="password"
+              placeholder=""
+              [(ngModel)]="signUpUser.password"
+              formControlName="password"
+              >
+          </div>
+          <app-error-label [control]="signUpForm.get('password')"></app-error-label>
+        </div>
+
+        <div class="field">
+          <label for="passwordConfirmation">Password confirmation</label>
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input 
+              id="passwordConfirmation"
+              type="password"
+              placeholder=""
+              [(ngModel)]="signUpUser.passwordConfirmation"
+              formControlName="passwordConfirmation"
+              >
+          </div>
+          <app-error-label [control]="signUpForm.get('passwordConfirmation')"></app-error-label>
+        </div>
+        <button class="ui positive basic button" [disabled]="signUpForm.invalid" type="submit">Submit</button>
+      </div>  
+    </form>
+
+    <div class="ui message">
+      Have an account? <a routerLink="/login">Login</a>
+    </div>
+  </div>
+</div>

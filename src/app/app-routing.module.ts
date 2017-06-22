@@ -1,13 +1,25 @@
-import { NgModule } from '@angular/core';
+import { NgModule }             from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TasksComponent } from './components/tasks/tasks.component';
-import { TodoComponent } from './components/todo/todo.component';
+import { TaskComponent }        from './components/task/task.component';
+import { TaskListsComponent }   from './components/task_lists/task_lists.component';
+import { ProfileComponent }     from './components/profile/profile.component';
+import { HomeComponent }        from './components/home/home.component';
+import { ListsManagementComponent } from './components/lists-management/lists-management.component';
+
+
+import { LoggedInGuard }        from './services/guards/logged-in-guards.service';
+import { AdminGuard }           from './services/guards/admin-guard.service'; 
 
 const routes: Routes = [
-    { path: '', redirectTo: '/tasks', pathMatch: 'full'},
-    { path: 'tasks',    component: TasksComponent },
-    { path: 'tasks/:id', component: TodoComponent }
+    { path: '', redirectTo: '/home', pathMatch: 'full'},
+    { path: 'home',         component: HomeComponent },
+    { path: 'lists',        component: TaskListsComponent, 
+                            canActivate: [LoggedInGuard]},
+    { path: 'lists_management', component:  ListsManagementComponent, 
+                                canActivate: [AdminGuard]},
+    { path: 'lists/:id',    component: TaskComponent },
+    { path: 'profile',      component: ProfileComponent}
 ];
 
 @NgModule({

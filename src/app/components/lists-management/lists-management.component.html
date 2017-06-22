@@ -1,0 +1,24 @@
+<md-card class="card col-md-8 col-md-offset-2">
+  <md-card-title>Task list management</md-card-title>
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="ui celled table" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>List name</th>
+        <th>User</th>
+        <th>Shares</th>
+        <th>Todo count</th>
+        <th>Done count</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let list of lists">
+        <td>{{ list.title }}</td>
+        <td>{{ list.user_email }}</td>
+        <td>{{ list.shares }}</td>
+        <td>{{ list.todo_count }}</td>
+        <td>{{ list.done_count }}</td>
+      </tr>
+    </tbody>
+  </table>
+</md-card>

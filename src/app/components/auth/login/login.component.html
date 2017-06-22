@@ -1,0 +1,53 @@
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui image header">
+      <div class="content">
+        Log-in to your account
+      </div>
+    </h2>
+    <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)" class="ui large form">
+      <div *ngIf="loading">
+        <md-progress-bar mode="query"></md-progress-bar>
+      </div>
+      <app-error-label [control]="loginForm"></app-error-label>
+      <div class="ui stacked secondary  segment">
+        <div class="field">
+          <label for="email">Email</label>
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input 
+              id="email"
+              type="email"
+              placeholder="email"
+              formControlName="email"
+              >
+          </div>
+          <app-error-label [control]="loginForm.get('email')"></app-error-label>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input 
+              id="password"
+              type="password"
+              placeholder=""
+              formControlName="password"
+              >
+          </div>
+          <app-error-label [control]="loginForm.get('password')"></app-error-label>
+        </div>
+        <button class="ui positive basic button" type="submit">Submit</button>
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+
+    <div class="ui message">
+      You don't have account <a routerLink="/signup">Register</a>
+    </div>
+  </div>
+</div>
+
+

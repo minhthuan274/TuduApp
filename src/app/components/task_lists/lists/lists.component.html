@@ -1,0 +1,41 @@
+<h2 class="text-center">Task list</h2>
+<section>
+  <form [formGroup]="form" (ngSubmit)="addList()">
+    <div>
+      <input 
+        type="text"
+        formControlName="newListTitle"
+        [(ngModel)]="newList.title">
+      <button [disabled]="form.invalid" class="btn-add-task">Add List</button>
+    </div>
+  </form>
+
+  <div *ngIf="loading">
+    <md-progress-bar mode="query"></md-progress-bar>
+  </div>
+
+  <ul>
+    <li *ngFor="let list of lists" 
+        class="faded" 
+      >
+      <div class="view" *ngIf="list.id != listEditing" (click)="goTodo(list.id)">
+        <label>{{list.title}}</label>
+        <i *ngIf="correct_user(list.user_id)" class="fa fa-remove pull-right" (click)="deleteList(list, $event)"></i>  
+        <i *ngIf="correct_user(list.user_id)" class="fa fa-pencil pull-right" (click)="changeToEdit(list, $event)"></i>
+      </div>
+
+      <input 
+        type="text"
+        #textList
+        *ngIf="list.id == listEditing"
+        (keyup.enter)="editList(textList.value, list, $event)"
+        (keyup.escape)="revertList()" 
+        value={{list.title}}>
+    </li>
+  </ul>
+</section>
+
+<ng-template #loading_template>
+  <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
+  <span class="sr-only">Loading...</span>
+</ng-template>
